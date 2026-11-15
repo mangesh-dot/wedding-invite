@@ -29,7 +29,7 @@ function openInvitation() {
     setTimeout(() => {
         openingScreen.remove();
         document.body.classList.remove("locked");
-    }, 3500);
+    }, 2500);
 }
 
 openButton.addEventListener("click", openInvitation);

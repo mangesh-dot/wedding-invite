@@ -354,11 +354,58 @@ body.locked {
 .hero-description { max-width: 380px; margin: 25px 0; color: var(--muted); font-size: 14px; line-height: 2; }
 .text-link { display: inline-flex; gap: 20px; align-items: center; padding-bottom: 8px; border-bottom: 1px solid var(--gold); color: var(--wine); font-size: 11px; font-weight: 700; letter-spacing: .08em; text-decoration: none; text-transform: uppercase; }
 .text-link span { color: #a57d48; font-size: 17px; }
-.hero-art { position: relative; min-height: 460px; display: grid; place-items: center; }
-.art-halo { position: absolute; width: 78%; aspect-ratio: 1; border: 1px solid rgba(176,139,79,.45); border-radius: 50%; }
+/* Wedding artwork */
+.hero-art {
+    position: relative;
+    width: 100%;
+    max-width: 480px;
+    margin: 30px auto;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    padding: 15px;
+    box-sizing: border-box;
+}
+.wedding_image {
+    position: relative;
+    z-index: 1;
+    display: block;
+    width: 100%;
+    max-width: 420px;
+    height: auto;
+    max-height: 600px;
+    object-fit: contain;
+    border-radius: 12px;
+}
+
+/* Decorative halo */
+.art-halo {
+    position: absolute;
+    width: 85%;
+    aspect-ratio: 1;
+    border-radius: 50%;
+    background: radial-gradient(
+        circle,
+        rgba(214, 180, 120, 0.2),
+        transparent 70%
+    );
+    z-index: 0;
+}
+
+.image-note {
+    position: relative;
+    z-index: 2;
+    margin-top: 12px;
+    font-size: 14px;
+    letter-spacing: 2px;
+    text-align: center;
+}
+
+
 .art-halo::before, .art-halo::after { content: ""; position: absolute; inset: 13px; border: 1px solid rgba(176,139,79,.2); border-radius: 50%; }
 .art-halo::after { inset: -13px; border-style: dashed; opacity: .5; }
-.wedding-image { position: relative; z-index: 1; display: block; width: min(72%, 390px); max-height: 540px; object-fit: contain; filter: drop-shadow(0 22px 30px rgba(50,20,25,.17)); }
+
 .wedding-image.image-missing { width: min(72%, 390px); min-height: 390px; padding: 25px; border: 1px dashed #c5a875; background: rgba(255,255,255,.35); color: var(--muted); text-align: center; object-fit: contain; }
 .image-note { position: absolute; z-index: 2; right: 0; bottom: 30px; color: #a57d48; font: italic 18px var(--serif); }
 .scroll-cue { display: flex; align-items: center; justify-content: center; gap: 12px; margin-top: 55px; color: #a79a9a; font-size: 8px; letter-spacing: .22em; }
