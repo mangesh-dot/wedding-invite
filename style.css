@@ -168,7 +168,7 @@ h2 em { color: #a57d48; font-weight: 400; }
 
 /* Common Day One Card */
 .day-one-main-card {
-    max-width: 750px;
+    max-width: 800px;
     margin: 30px auto;
     padding: 25px;
     background: #fffaf4;
