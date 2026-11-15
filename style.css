@@ -166,101 +166,76 @@ h2 em { color: #a57d48; font-weight: 400; }
     color: white;
 }
 
-/* Day 1 - Haldi Background */
-.event-card.day-one-card {
-    position: relative;
+/* Common Day One Card */
+.day-one-main-card {
+    max-width: 750px;
+    margin: 30px auto;
+    padding: 25px;
+    background: #fffaf4;
+    border: 1px solid #dfc9a8;
+    border-radius: 20px;
+    box-shadow: 0 8px 25px rgba(80, 45, 35, 0.08);
+    text-align: center;
+}
+
+/* Heading */
+.day-one-heading {
+    margin-bottom: 25px;
+}
+
+.day-one-heading .event-icon,
+.day-one-heading .event-divider {
+    color: #b58a50;
+}
+
+.day-one-heading .event-label {
+    color: #a17b50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.day-one-heading h3 {
+    color: #743b45;
+    font-family: Georgia, serif;
+    font-size: 26px;
+    margin: 12px 0;
+}
+
+/* Images */
+.day-one-events {
+    display: flex;
+    flex-direction: column;
+    gap: 20px;
+}
+
+.day-event {
+    width: 100%;
     overflow: hidden;
-    isolation: isolate;
-
-    background:
-        linear-gradient(
-            rgba(43, 16, 23, 0.55),
-            rgba(43, 16, 23, 0.72)
-        ),
-        url("image/haldi.jpeg");
-
-    background-size: cover;
-    background-position: center;
-    background-repeat: no-repeat;
-
-    border: 1px solid #d6ad60;
-    border-radius: 16px;
+    border-radius: 14px;
 }
 
-/* Day 1 text colors */
-.day-one-card .event-icon,
-.day-one-card .event-label,
-.day-one-card .event-divider,
-.day-one-card .schedule-time {
-    color: #f0ce91;
+.day-event img {
+    display: block;
+    width: 100%;
+    height: auto;
+    object-fit: contain;
 }
 
-.day-one-card h3,
-.day-one-card .schedule-info h4 {
-    color: #ffffff;
-}
-.day-one-card h3 {
-    color: #e8bd72;
-}
-
-.day-one-card .schedule-info p {
-    color: #f5e9df;
-}
-
-.day-one-card .schedule-item {
-    border-bottom-color: rgba(255, 255, 255, 0.25);
-}
-
-
-/* Mobile responsive */
+/* Mobile */
 @media (max-width: 600px) {
-    .wedding-itinerary {
-        margin: 35px auto;
-        padding: 12px;
+    .day-one-main-card {
+        margin: 20px 10px;
+        padding: 15px;
     }
 
-    .itinerary-heading h2 {
-        font-size: 25px;
-    }
-
-    .ganesh-mantra {
-        font-size: 17px;
-    }
-
-    .mantra {
-        font-size: 13px;
-    }
-
-    .event-card {
-        padding: 22px 15px;
-        margin: 18px auto;
-        border-radius: 13px;
-    }
-
-    .event-card h3 {
+    .day-one-heading h3 {
         font-size: 22px;
     }
 
-    .schedule-item {
-        gap: 12px;
-        padding: 16px 2px;
-    }
-
-    .schedule-time {
-        min-width: 105px;
-        font-size: 12px;
-    }
-
-    .schedule-info h4 {
-        font-size: 15px;
-    }
-
-    .schedule-info p {
-        font-size: 11px;
-    }
-
-    .outline-button {
-        padding: 11px 20px;
+    .day-one-events {
+        gap: 15px;
     }
 }
 
