@@ -26,6 +26,241 @@ h2 { margin: 0; font: 500 clamp(40px, 6vw, 68px)/.98 var(--serif); color: var(--
 h2 em { color: #a57d48; font-weight: 400; }
 .section-intro { max-width: 520px; margin: 18px auto 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
 
+/* Wedding itinerary */
+.wedding-itinerary {
+    width: 100%;
+    max-width: 850px;
+    margin: 60px auto;
+    padding: 20px;
+    box-sizing: border-box;
+}
+
+.itinerary-heading {
+    text-align: center;
+    margin-bottom: 35px;
+}
+
+.ganesh-mantra {
+    color: #b58a50;
+    font-size: 20px;
+    font-weight: 600;
+    margin-bottom: 15px;
+}
+
+.mantra {
+    color: #6f5145;
+    font-size: 15px;
+    line-height: 1.9;
+}
+
+.itinerary-heading h2 {
+    color: #743b45;
+    font-family: Georgia, serif;
+    font-size: 30px;
+    margin: 12px 0;
+}
+
+.itinerary-subtitle {
+    color: #9b8068;
+    letter-spacing: 2px;
+    font-size: 12px;
+}
+
+/* Event cards */
+.event-card {
+    background: #fffaf4;
+    border: 1px solid #dfc9a8;
+    border-radius: 16px;
+    padding: 30px;
+    margin: 25px auto;
+    text-align: center;
+    box-shadow: 0 8px 25px rgba(80, 45, 35, 0.07);
+}
+
+.event-icon {
+    color: #b58a50;
+    font-size: 28px;
+}
+
+.event-label {
+    color: #a17b50;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    font-size: 12px;
+    margin: 10px 0;
+}
+
+.event-card h3 {
+    color: #743b45;
+    font-family: Georgia, serif;
+    font-size: 26px;
+    margin: 12px 0;
+}
+
+.event-divider {
+    color: #b58a50;
+    margin: 18px 0;
+}
+
+/* Ceremony schedule */
+.event-schedule {
+    max-width: 520px;
+    margin: 25px auto 5px;
+    text-align: left;
+}
+
+.schedule-item {
+    display: flex;
+    align-items: center;
+    gap: 20px;
+    padding: 18px 10px;
+    border-bottom: 1px solid #eadccd;
+}
+
+.schedule-item:last-child {
+    border-bottom: none;
+}
+
+.schedule-time {
+    min-width: 125px;
+    color: #a17b50;
+    font-size: 13px;
+    font-weight: 600;
+}
+
+.schedule-info h4 {
+    color: #743b45;
+    font-size: 17px;
+    margin: 0 0 5px;
+}
+
+.schedule-info p {
+    color: #947c6d;
+    font-size: 13px;
+    margin: 0;
+}
+
+.venue-card {
+    background: #f8f0e7;
+}
+
+.event-location {
+    color: #8c7162;
+    margin: 12px 0 22px;
+}
+
+.outline-button {
+    display: inline-block;
+    color: #743b45;
+    border: 1px solid #b58a50;
+    padding: 12px 25px;
+    border-radius: 30px;
+    text-decoration: none;
+    font-size: 13px;
+    transition: all 0.3s ease;
+}
+
+.outline-button:hover {
+    background: #743b45;
+    border-color: #743b45;
+    color: white;
+}
+
+/* Day 1 - Haldi Background */
+.event-card.day-one-card {
+    position: relative;
+    overflow: hidden;
+    isolation: isolate;
+
+    background:
+        linear-gradient(
+            rgba(43, 16, 23, 0.55),
+            rgba(43, 16, 23, 0.72)
+        ),
+        url("image/haldi.jpeg");
+
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+
+    border: 1px solid #d6ad60;
+    border-radius: 16px;
+}
+
+/* Day 1 text colors */
+.day-one-card .event-icon,
+.day-one-card .event-label,
+.day-one-card .event-divider,
+.day-one-card .schedule-time {
+    color: #f0ce91;
+}
+
+.day-one-card h3,
+.day-one-card .schedule-info h4 {
+    color: #ffffff;
+}
+
+.day-one-card .schedule-info p {
+    color: #f5e9df;
+}
+
+.day-one-card .schedule-item {
+    border-bottom-color: rgba(255, 255, 255, 0.25);
+}
+
+
+/* Mobile responsive */
+@media (max-width: 600px) {
+    .wedding-itinerary {
+        margin: 35px auto;
+        padding: 12px;
+    }
+
+    .itinerary-heading h2 {
+        font-size: 25px;
+    }
+
+    .ganesh-mantra {
+        font-size: 17px;
+    }
+
+    .mantra {
+        font-size: 13px;
+    }
+
+    .event-card {
+        padding: 22px 15px;
+        margin: 18px auto;
+        border-radius: 13px;
+    }
+
+    .event-card h3 {
+        font-size: 22px;
+    }
+
+    .schedule-item {
+        gap: 12px;
+        padding: 16px 2px;
+    }
+
+    .schedule-time {
+        min-width: 105px;
+        font-size: 12px;
+    }
+
+    .schedule-info h4 {
+        font-size: 15px;
+    }
+
+    .schedule-info p {
+        font-size: 11px;
+    }
+
+    .outline-button {
+        padding: 11px 20px;
+    }
+}
+
 
 /* -------------------------------------------------------
    OPENING CURTAINS
