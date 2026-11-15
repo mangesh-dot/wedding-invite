@@ -27,7 +27,7 @@ h2 em { color: #a57d48; font-weight: 400; }
 .section-intro { max-width: 520px; margin: 18px auto 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
 
 /* Opening curtains */
-.opening-screen { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; overflow: hidden; min-height: 100svh; background: radial-gradient(ellipse at 50% 45%, #75444a 0%, #401923 55%, #210b12 100%); color: var(--gold-light); transition: visibility .1s linear 3.1s; }
+.opening-screen { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; overflow: hidden; min-height: 100svh; background: transparent; transition: visibility .1s linear 3.1s; }
 .opening-screen::before, .opening-screen::after { content: ""; position: absolute; border: 1px solid rgba(215,184,120,.25); border-radius: 50%; width: min(78vw, 570px); aspect-ratio: 1; pointer-events: none; }
 .opening-screen::after { width: min(65vw, 470px); }
 .opening-ornament { position: absolute; top: 8%; color: var(--gold); font-size: 26px; text-shadow: 0 0 22px #e6c98c; }
