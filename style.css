@@ -26,44 +26,42 @@ h2 { margin: 0; font: 500 clamp(40px, 6vw, 68px)/.98 var(--serif); color: var(--
 h2 em { color: #a57d48; font-weight: 400; }
 .section-intro { max-width: 520px; margin: 18px auto 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
 
-/* Wedding itinerary */
+/* Wedding Itinerary */
 .wedding-itinerary {
     width: 100%;
     max-width: 850px;
-    margin: 60px auto;
-    padding: 20px;
+    margin: 30px auto;
+    padding: 15px;
     box-sizing: border-box;
 }
 
-.itinerary-heading {
-    text-align: center;
-    margin-bottom: 35px;
+/* Full-size Images */
+.day-event {
+    width: 100%;
+    margin: 0 auto 20px;
+    overflow: hidden;
+    border-radius: 14px;
 }
 
-.ganesh-mantra {
-    color: #b58a50;
-    font-size: 20px;
-    font-weight: 600;
-    margin-bottom: 15px;
+.day-event img {
+    display: block;
+    width: 100%;
+    height: auto;
+    max-width: 100%;
+    object-fit: contain;
 }
 
-.mantra {
-    color: #6f5145;
-    font-size: 15px;
-    line-height: 1.9;
-}
+/* Mobile Responsive */
+@media (max-width: 600px) {
+    .wedding-itinerary {
+        margin: 15px auto;
+        padding: 10px;
+    }
 
-.itinerary-heading h2 {
-    color: #743b45;
-    font-family: Georgia, serif;
-    font-size: 30px;
-    margin: 12px 0;
-}
-
-.itinerary-subtitle {
-    color: #9b8068;
-    letter-spacing: 2px;
-    font-size: 12px;
+    .day-event {
+        margin-bottom: 15px;
+        border-radius: 10px;
+    }
 }
 
 /* Event cards */
