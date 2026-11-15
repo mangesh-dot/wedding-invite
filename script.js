@@ -8,7 +8,7 @@ const musicLabel = musicButton.querySelector(".music-label");
 let isOpened = false;
 let startY = 0;
 
-function openInvitation() {
+async function openInvitation() {
     if (isOpened) return;
 
     isOpened = true;
@@ -18,6 +18,17 @@ function openInvitation() {
 
     // Disable open button
     openButton.disabled = true;
+
+    // Start background music
+    try {
+        await music.play();
+
+        musicLabel.textContent = "Music On";
+        musicButton.setAttribute("aria-label", "Pause background music");
+
+    } catch (error) {
+        console.log("Music could not start. Visitor can press the music button.");
+    }
 
     // Start curtain and text animations
     openingScreen.classList.add("open");
@@ -55,7 +66,7 @@ document.addEventListener("keydown", (event) => {
 });
 
 // Countdown: counts down to the start of the wedding date in the visitor's local timezone.
-const weddingDate = new Date(2026, 11, 25, 0, 0, 0);
+const weddingDate = new Date(2026, 11, 12, 0, 0, 0);
 const countdownFields = {
   days: document.getElementById("days"),
   hours: document.getElementById("hours"),
@@ -117,7 +128,9 @@ musicButton.addEventListener("click", async () => {
   }
 });
 
-// WhatsApp share link opens the guest's WhatsApp share flow; no phone number is assumed.
-const invitationMessage = "We are delighted to invite you to Rahul & Priya's wedding on 25 December 2026 in Dehradun. We hope you can join us!";
+// WhatsApp RSVP with a specific phone number
+const phoneNumber = "919760676398"; // Replace with your number (country code + number)
+const invitationMessage = "Yes, I accept the wedding invitation!";
+
 document.getElementById("rsvpButton").href =
-  `https://wa.me/?text=${encodeURIComponent(invitationMessage)}`;
+    `https://wa.me/${phoneNumber}?text=${encodeURIComponent(invitationMessage)}`;

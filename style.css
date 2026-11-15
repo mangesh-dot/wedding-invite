@@ -90,8 +90,8 @@ h2 em { color: #a57d48; font-weight: 400; }
     margin: 10px 0;
 }
 
-.event-card h3 {
-    color: #743b45;
+.day-one-card h3 {
+    color: #f0ce91;
     font-family: Georgia, serif;
     font-size: 26px;
     margin: 12px 0;
@@ -198,6 +198,9 @@ h2 em { color: #a57d48; font-weight: 400; }
 .day-one-card h3,
 .day-one-card .schedule-info h4 {
     color: #ffffff;
+}
+.day-one-card h3 {
+    color: #e8bd72;
 }
 
 .day-one-card .schedule-info p {
