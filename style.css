@@ -26,34 +26,325 @@ h2 { margin: 0; font: 500 clamp(40px, 6vw, 68px)/.98 var(--serif); color: var(--
 h2 em { color: #a57d48; font-weight: 400; }
 .section-intro { max-width: 520px; margin: 18px auto 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
 
-/* Opening curtains */
-.opening-screen { position: fixed; inset: 0; z-index: 20; display: grid; place-items: center; overflow: hidden; min-height: 100svh; background: transparent; transition: visibility .1s linear 3.1s; }
-.opening-screen::before, .opening-screen::after { content: ""; position: absolute; border: 1px solid rgba(215,184,120,.25); border-radius: 50%; width: min(78vw, 570px); aspect-ratio: 1; pointer-events: none; }
-.opening-screen::after { width: min(65vw, 470px); }
-.opening-ornament { position: absolute; top: 8%; color: var(--gold); font-size: 26px; text-shadow: 0 0 22px #e6c98c; }
-.invitation-content { position: relative; z-index: 4; width: min(90%, 650px); padding: 30px 15px; text-align: center; animation: riseIn 1.2s ease both; }
-.invitation-content .eyebrow { color: var(--gold); }
-.ornament-line { display: flex; align-items: center; justify-content: center; gap: 14px; margin: 17px 0 22px; color: var(--gold); font-size: 22px; }
-.ornament-line span { width: 48px; height: 1px; background: linear-gradient(90deg, transparent, var(--gold)); }
-.ornament-line span:last-child { transform: rotate(180deg); }
-.invite-kicker { color: #ead8b6; font: italic 20px var(--serif); }
-.invitation-content h1 { margin: 12px 0 5px; color: #f7e9c9; font: 500 clamp(56px, 11vw, 100px)/.95 var(--serif); text-shadow: 0 4px 28px rgba(0,0,0,.22); }
-.invitation-content h1 span, .event-card h3 span, .site-footer strong span { color: var(--gold); font-style: italic; }
-.opening-subtitle { margin: 15px 0 23px; color: #e1cda8; font: italic 19px var(--serif); }
-.opening-date { color: var(--gold); font-size: 10px; letter-spacing: .26em; }
-.opening-date i { padding: 0 8px; font-style: normal; }
-.open-button { display: inline-flex; align-items: center; gap: 22px; margin-top: 24px; padding: 14px 23px; border: 1px solid var(--gold); border-radius: 2px; background: linear-gradient(135deg, #f0dfb6, #c7a15e); color: #3d1821; font: 700 10px var(--sans); letter-spacing: .14em; text-transform: uppercase; cursor: pointer; box-shadow: 0 8px 30px rgba(0,0,0,.22); transition: transform .25s, box-shadow .25s; }
-.open-button:hover { transform: translateY(-3px); box-shadow: 0 12px 35px rgba(215,184,120,.25); }
-.swipe-hint { margin-top: 16px; color: rgba(240,223,182,.7); font-size: 9px; letter-spacing: .12em; }
-.curtain { position: absolute; z-index: 3; top: 0; width: 51%; height: 100%; background: repeating-linear-gradient(90deg, rgba(20,0,7,.28) 0 5px, transparent 8px 20px, rgba(255,210,180,.08) 24px 27px), linear-gradient(90deg,#260810,#6c2635 35%,#8a3b48 60%,#4a1724); box-shadow: inset 0 0 45px rgba(0,0,0,.42); transition: transform 3s cubic-bezier(.77,0,.18,1); will-change: transform; }
-.curtain-left { left: 0; transform-origin: left; border-right: 2px solid var(--gold); }
-.curtain-right { right: 0; transform-origin: right; border-left: 2px solid var(--gold); }
-.curtain-bottom { position: absolute; z-index: 2; bottom: 0; width: 100%; height: 10px; background: linear-gradient(90deg,#8b693a,#f0dfb6,#8b693a); }
-.opening-screen.open .curtain-left { transform: translateX(-105%) rotateY(14deg); }
-.opening-screen.open .curtain-right { transform: translateX(105%) rotateY(-14deg); }
-.opening-screen.open .invitation-content { opacity: 0; transform: translateY(-15px) scale(.96); transition: opacity .65s, transform .65s; }
-.opening-screen.open { visibility: hidden; pointer-events: none; }
-.opening-screen.open .curtain-bottom { opacity: 0; transition: opacity .5s; }
+
+/* -------------------------------------------------------
+   OPENING CURTAINS
+------------------------------------------------------- */
+
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    z-index: 20;
+    display: grid;
+    place-items: center;
+    overflow: hidden;
+    min-height: 100svh;
+    background: transparent;
+}
+
+/* Decorative circular borders */
+.opening-screen::before,
+.opening-screen::after {
+    content: "";
+    position: absolute;
+    border: 1px solid rgba(215, 184, 120, .25);
+    border-radius: 50%;
+    width: min(78vw, 570px);
+    aspect-ratio: 1;
+    pointer-events: none;
+    transition: opacity 1.5s ease;
+}
+
+.opening-screen::after {
+    width: min(65vw, 470px);
+}
+
+/* Top decorative ornament */
+.opening-ornament {
+    position: absolute;
+    top: 8%;
+    color: var(--gold);
+    font-size: 26px;
+    text-shadow: 0 0 22px #e6c98c;
+    transition: opacity 1.5s ease;
+}
+
+/* -------------------------------------------------------
+   INVITATION CONTENT
+------------------------------------------------------- */
+
+.invitation-content {
+    position: relative;
+    z-index: 4;
+    width: min(90%, 650px);
+    padding: 30px 15px;
+    text-align: center;
+
+    opacity: 1;
+    transform: translateY(0);
+
+    animation: riseIn 1.2s ease both;
+
+    transition:
+        opacity 2.8s ease-in-out,
+        transform 2.8s cubic-bezier(.22, .61, .36, 1);
+}
+
+.invitation-content .eyebrow {
+    color: var(--gold);
+}
+
+.ornament-line {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 14px;
+    margin: 17px 0 22px;
+    color: var(--gold);
+    font-size: 22px;
+}
+
+.ornament-line span {
+    width: 48px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, var(--gold));
+}
+
+.ornament-line span:last-child {
+    transform: rotate(180deg);
+}
+
+.invite-kicker {
+    color: #ead8b6;
+    font: italic 20px var(--serif);
+}
+
+.invitation-content h1 {
+    margin: 12px 0 5px;
+    color: #f7e9c9;
+    font: 500 clamp(56px, 11vw, 100px)/.95 var(--serif);
+    text-shadow: 0 4px 28px rgba(0, 0, 0, .22);
+}
+
+.invitation-content h1 span,
+.event-card h3 span,
+.site-footer strong span {
+    color: var(--gold);
+    font-style: italic;
+}
+
+.opening-subtitle {
+    margin: 15px 0 23px;
+    color: #e1cda8;
+    font: italic 19px var(--serif);
+}
+
+.opening-date {
+    color: var(--gold);
+    font-size: 10px;
+    letter-spacing: .26em;
+}
+
+.opening-date i {
+    padding: 0 8px;
+    font-style: normal;
+}
+
+/* -------------------------------------------------------
+   OPEN INVITATION BUTTON
+------------------------------------------------------- */
+
+.open-button {
+    display: inline-flex;
+    align-items: center;
+    gap: 22px;
+    margin-top: 24px;
+    padding: 14px 23px;
+    border: 1px solid var(--gold);
+    border-radius: 2px;
+    background: linear-gradient(135deg, #f0dfb6, #c7a15e);
+    color: #3d1821;
+    font: 700 10px var(--sans);
+    letter-spacing: .14em;
+    text-transform: uppercase;
+    cursor: pointer;
+    box-shadow: 0 8px 30px rgba(0, 0, 0, .22);
+    transition: transform .25s, box-shadow .25s;
+}
+
+.open-button:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 12px 35px rgba(215, 184, 120, .25);
+}
+
+.open-button:disabled {
+    cursor: default;
+}
+
+/* Swipe instruction */
+.swipe-hint {
+    margin-top: 16px;
+    color: rgba(240, 223, 182, .7);
+    font-size: 9px;
+    letter-spacing: .12em;
+}
+
+/* -------------------------------------------------------
+   CURTAIN DESIGN
+------------------------------------------------------- */
+
+.curtain {
+    position: absolute;
+    z-index: 3;
+    top: 0;
+    width: 51%;
+    height: 100%;
+
+    background:
+        repeating-linear-gradient(
+            90deg,
+            rgba(20, 0, 7, .28) 0 5px,
+            transparent 8px 20px,
+            rgba(255, 210, 180, .08) 24px 27px
+        ),
+        linear-gradient(
+            90deg,
+            #260810,
+            #6c2635 35%,
+            #8a3b48 60%,
+            #4a1724
+        );
+
+    box-shadow: inset 0 0 45px rgba(0, 0, 0, .42);
+
+    transition: transform 3s cubic-bezier(.77, 0, .18, 1);
+    will-change: transform;
+}
+
+.curtain-left {
+    left: 0;
+    transform-origin: left;
+    border-right: 2px solid var(--gold);
+}
+
+.curtain-right {
+    right: 0;
+    transform-origin: right;
+    border-left: 2px solid var(--gold);
+}
+
+/* Bottom gold border */
+.curtain-bottom {
+    position: absolute;
+    z-index: 2;
+    bottom: 0;
+    width: 100%;
+    height: 10px;
+    background: linear-gradient(90deg, #8b693a, #f0dfb6, #8b693a);
+    transition: opacity 1s ease;
+}
+
+/* -------------------------------------------------------
+   OPEN ANIMATION
+------------------------------------------------------- */
+
+/* Left curtain opens */
+.opening-screen.open .curtain-left {
+    transform: translateX(-105%) rotateY(14deg);
+}
+
+/* Right curtain opens */
+.opening-screen.open .curtain-right {
+    transform: translateX(105%) rotateY(-14deg);
+}
+
+/* Entire text content fades and moves upward */
+.opening-screen.open .invitation-content {
+    animation: none;
+    opacity: 0;
+    transform: translateY(-150px) scale(.96);
+    pointer-events: none;
+}
+
+/* Decorative elements fade */
+.opening-screen.open .opening-ornament,
+.opening-screen.open::before,
+.opening-screen.open::after {
+    opacity: 0;
+}
+
+/* Bottom border fades */
+.opening-screen.open .curtain-bottom {
+    opacity: 0;
+}
+
+/* -------------------------------------------------------
+   INITIAL TEXT ANIMATION
+------------------------------------------------------- */
+
+@keyframes riseIn {
+    from {
+        opacity: 0;
+        transform: translateY(25px);
+    }
+
+    to {
+        opacity: 1;
+        transform: translateY(0);
+    }
+}
+
+/* -------------------------------------------------------
+   MOBILE RESPONSIVE
+------------------------------------------------------- */
+
+@media (max-width: 767px) {
+    .invitation-content {
+        width: 95%;
+        padding: 20px 10px;
+    }
+
+    .invitation-content h1 {
+        font-size: clamp(42px, 11vw, 65px);
+    }
+
+    .invite-kicker {
+        font-size: 17px;
+    }
+
+    .opening-subtitle {
+        font-size: 17px;
+    }
+
+    .curtain {
+        transition-duration: 3s;
+    }
+}
+
+/* Accessibility */
+@media (prefers-reduced-motion: reduce) {
+    .invitation-content,
+    .curtain,
+    .opening-ornament,
+    .curtain-bottom {
+        animation: none;
+        transition-duration: 0.01ms;
+    }
+}
+
+/* Prevent scrolling while curtains are moving */
+body.locked {
+    overflow: hidden;
+    height: 100vh;
+    touch-action: none;
+}
+
+/* Keep the opening screen fixed */
+.opening-screen {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+}
 
 /* Hero */
 .hero { padding: 105px 0 55px; }

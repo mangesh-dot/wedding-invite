@@ -9,13 +9,27 @@ let isOpened = false;
 let startY = 0;
 
 function openInvitation() {
-  if (isOpened) return;
-  isOpened = true;
-  openingScreen.classList.add("open");
-  document.body.classList.remove("locked");
-  openButton.disabled = true;
-  window.setTimeout(() => openingScreen.remove(), 3300);
-  createPetals(16);
+    if (isOpened) return;
+
+    isOpened = true;
+
+    // Lock scrolling
+    document.body.classList.add("locked");
+
+    // Disable open button
+    openButton.disabled = true;
+
+    // Start curtain and text animations
+    openingScreen.classList.add("open");
+
+    // Create falling petals
+    createPetals(16);
+
+    // Unlock scrolling after curtains finish
+    setTimeout(() => {
+        openingScreen.remove();
+        document.body.classList.remove("locked");
+    }, 3500);
 }
 
 openButton.addEventListener("click", openInvitation);
