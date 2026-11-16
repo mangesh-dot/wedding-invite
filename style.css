@@ -26,87 +26,106 @@ h2 { margin: 0; font: 500 clamp(40px, 6vw, 68px)/.98 var(--serif); color: var(--
 h2 em { color: #a57d48; font-weight: 400; }
 .section-intro { max-width: 520px; margin: 18px auto 0; color: var(--muted); font-size: 13px; line-height: 1.9; }
 
+/* HERO CONTENT REVEAL */
+.hero-copy > *,
+.hero-art .wedding-image,
+.hero-art .image-note {
+    opacity: 0;
+    transform: translateY(30px);
+    transition:
+        opacity 0.9s ease,
+        transform 0.9s cubic-bezier(0.22, 1, 0.36, 1);
+}
 
+/* Image gets a gentle zoom */
+.hero-art .wedding-image {
+    transform: translateY(20px) scale(0.96);
+}
 
-/* PHONE VIEW ANIMATIONS */
+/* Reveal */
+.hero-frame.hero-content-revealed .hero-copy > *,
+.hero-frame.hero-content-revealed .hero-art .image-note {
+    opacity: 1;
+    transform: translateY(0);
+}
+
+.hero-frame.hero-content-revealed .hero-art .wedding-image {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+}
+
+/* Staggered timing */
+.hero-frame.hero-content-revealed .eyebrow {
+    transition-delay: 0.1s;
+}
+
+.hero-frame.hero-content-revealed h2 {
+    transition-delay: 0.3s;
+}
+
+.hero-frame.hero-content-revealed .hero-description {
+    transition-delay: 0.5s;
+}
+
+.hero-frame.hero-content-revealed .text-link {
+    transition-delay: 0.7s;
+}
+
+.hero-frame.hero-content-revealed .wedding-image {
+    transition-delay: 0.3s;
+}
+
+.hero-frame.hero-content-revealed .image-note {
+    transition-delay: 0.8s;
+}
+
+/* MOBILE SCROLL REVEAL */
 @media (max-width: 768px) {
 
-    /* Card tap animation */
     .day-one-main-card,
     .event-card,
-    .venue-card {
-        transition: transform 0.3s ease, box-shadow 0.3s ease;
-        -webkit-tap-highlight-color: transparent;
-    }
-
-    .day-one-main-card:active,
-    .event-card:active,
-    .venue-card:active {
-        transform: scale(0.97);
-        box-shadow: 0 10px 25px rgba(160, 120, 50, 0.2);
-    }
-
-    /* Image tap zoom */
-    .day-event {
-        overflow: hidden;
-    }
-
-    .day-event img {
-        transition: transform 0.4s ease;
-    }
-
-    .day-event:active img {
-        transform: scale(1.06);
-    }
-
-    /* Schedule tap animation */
+    .venue-card,
+    .day-event,
     .schedule-item {
-        transition: transform 0.25s ease, background 0.25s ease;
+        opacity: 0;
+        transform: translateY(35px);
+        transition:
+            opacity 0.8s ease,
+            transform 0.8s cubic-bezier(0.2, 0.7, 0.3, 1);
     }
 
-    .schedule-item:active {
-        transform: scale(0.98);
-        background: rgba(194, 155, 82, 0.10);
+    /* When element enters screen */
+    .scroll-show {
+        opacity: 1;
+        transform: translateY(0);
     }
 
-    /* Button tap animation */
-    .outline-button,
-    button {
-        transition: transform 0.2s ease;
-        -webkit-tap-highlight-color: transparent;
+    /* Slight stagger for Day One images */
+    .day-one-events .day-event:nth-child(1) {
+        transition-delay: 0.1s;
     }
 
-    .outline-button:active,
-    button:active {
-        transform: scale(0.94);
+    .day-one-events .day-event:nth-child(2) {
+        transition-delay: 0.2s;
     }
 
-    /* Icon tap animation */
-    .event-icon {
-        display: inline-block;
-        transition: transform 0.3s ease;
-    }
-
-    .event-icon:active {
-        transform: rotate(25deg) scale(1.2);
+    .day-one-events .day-event:nth-child(3) {
+        transition-delay: 0.3s;
     }
 }
 
-/* Respect reduced-motion preference */
+/* Accessibility */
 @media (prefers-reduced-motion: reduce) {
     .day-one-main-card,
     .event-card,
     .venue-card,
-    .day-event img,
-    .schedule-item,
-    .outline-button,
-    button,
-    .event-icon {
-        transition: none !important;
-        animation: none !important;
+    .day-event,
+    .schedule-item {
+        opacity: 1;
+        transform: none;
+        transition: none;
     }
 }
-
 
 
 

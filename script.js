@@ -128,6 +128,40 @@ musicButton.addEventListener("click", async () => {
   }
 });
 
+/* Mobile scroll reveal animation */
+document.addEventListener("DOMContentLoaded", () => {
+
+    if (window.matchMedia("(max-width: 768px)").matches) {
+
+        const revealElements = document.querySelectorAll(
+            ".day-one-main-card, .event-card, .venue-card, .day-event, .schedule-item"
+        );
+
+        const observer = new IntersectionObserver((entries, observer) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.classList.add("scroll-show");
+                    observer.unobserve(entry.target);
+                }
+            });
+        }, {
+            threshold: 0.12,
+            rootMargin: "0px 0px -30px 0px"
+        });
+
+        revealElements.forEach(element => {
+            observer.observe(element);
+        });
+    }
+});
+
+window.addEventListener("load", () => {
+    setTimeout(() => {
+        document.querySelector(".hero-frame")
+            ?.classList.add("hero-content-revealed");
+    }, 2000);
+});;
+
 // WhatsApp RSVP with a specific phone number
 const phoneNumber = "919760676398"; // Replace with your number (country code + number)
 const invitationMessage = "Yes, I accept the wedding invitation!";
