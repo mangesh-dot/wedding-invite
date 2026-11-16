@@ -40,7 +40,7 @@ async function openInvitation() {
     setTimeout(() => {
         openingScreen.remove();
         document.body.classList.remove("locked");
-    }, 2500);
+    }, 2400);
 }
 
 openButton.addEventListener("click", openInvitation);
