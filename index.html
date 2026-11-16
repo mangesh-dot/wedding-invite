@@ -9,8 +9,8 @@
   <meta property="og:type" content="website">
   <meta property="og:title" content="Anshul &amp; Simran | Wedding Invitation 💍">
   <meta property="og:description" content="A beautiful journey begins here. Join us on 12 December 2026 in Ramnagar.">
-  <meta property="og:image" content="https://https://weddinganshul1.netlify.app//image/anshul_wedding.jpeg">
-  <meta property="og:url" content="https://https://weddinganshul1.netlify.app/">
+<meta property="og:image" content="https://weddinganshul1.netlify.app/image/anshul_wedding.jpeg">
+<meta property="og:url" content="https://weddinganshul1.netlify.app/">
   <meta property="og:image:width" content="1200">
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
@@ -18,30 +18,36 @@
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@400;500;600;700&family=DM+Sans:wght@400;500;600;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- Marks the page as JavaScript-enabled before first paint, so the opening animation never flashes. -->
+  <script>document.documentElement.classList.add("js");</script>
+  <!-- Without JavaScript the curtain cannot open, so hide it and show the invitation directly. -->
+  <noscript><style>.opening-screen { display: none !important; } body.locked { overflow: auto; height: auto; touch-action: auto; }</style></noscript>
 </head>
 <body>
   <div class="petal-layer" aria-hidden="true"></div>
 
-  <main>
-    <section class="opening-screen" aria-label="Welcome to the wedding invitation">
-      <div class="curtain curtain-left"></div>
-      <div class="curtain curtain-right"></div>
-      <div class="opening-ornament" aria-hidden="true">✦</div>
-      <div class="invitation-content">
-        <p class="eyebrow">Together with our families</p>
-        <div class="ornament-line"><span></span> ❧ <span></span></div>
-        <p class="invite-kicker">You are joyfully invited to celebrate</p>
-        <h1>Anshul <span>&amp;</span> Simran</h1>
-        <p class="opening-subtitle">A beautiful journey begins here</p>
-        <p class="opening-date">25 <i>•</i> DECEMBER <i>•</i> 2026</p>
-        <button class="open-button" id="openButton" type="button">
-          <span>Open Invitation</span><span aria-hidden="true">↓</span>
-        </button>
-        <p class="swipe-hint">Tap or swipe up to unveil the celebration</p>
-      </div>
-      <div class="curtain-bottom" aria-hidden="true"></div>
-    </section>
+ 
 
+     <!-- Opening curtain (sits outside <main> so the page behind it can be made inert until it opens) -->
+  <section class="opening-screen" role="dialog" aria-modal="true" aria-labelledby="opening-title">
+    <div class="curtain curtain-left"></div>
+    <div class="curtain curtain-right"></div>
+    <div class="opening-ornament" aria-hidden="true">✦</div>
+    <div class="invitation-content">
+      <p class="eyebrow">Together with our families</p>
+      <div class="ornament-line" aria-hidden="true"><span></span> ❧ <span></span></div>
+      <p class="invite-kicker">You are joyfully invited to celebrate</p>
+      <p class="couple-names" id="opening-title">Anshul <span>&amp;</span> Simran</p>
+      <p class="opening-subtitle">A beautiful journey begins here</p>
+      <p class="opening-date">12 <i>•</i> December <i>•</i> 2026</p>
+      <button class="open-button" id="openButton" type="button">
+        <span>Open Invitation</span><span aria-hidden="true">↓</span>
+      </button>
+      <p class="swipe-hint">Tap the button or swipe up to unveil the celebration</p>
+    </div>
+    <div class="curtain-bottom" aria-hidden="true"></div>
+  </section>
+ <main>
     <section class="hero section-shell" id="home">
       <div class="hero-frame">
         <div class="hero-copy">
@@ -51,12 +57,12 @@
           <a class="text-link" href="#celebration">Explore the invitation <span>↘</span></a>
         </div>
 <div class="hero-art">
-    <div class="art-halo"></div>
+   
 
     <img
         src="image/anshul_wedding.jpeg"
         alt="Wedding invitation artwork"
-        class="wedding_image"
+        class="wedding-image"
         onerror="this.classList.add('image-missing'); this.alt='Add your wedding artwork at image/anshul_wedding.png';"
     >
 
@@ -256,7 +262,7 @@
     <div class="footer-ornament">❧</div>
     <p>Made with love for</p>
     <strong>Anshul <span>&amp;</span> Simran</strong>
-    <small>25 · 12 · 2026</small>
+    <small>12 · 12 · 2026</small>
   </footer>
 
   <div class="music-control" id="musicControl">
