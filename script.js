@@ -20,15 +20,15 @@ async function openInvitation() {
     openButton.disabled = true;
 
     // Start background music
-    try {
-        await music.play();
+    // try {
+    //     await music.play();
 
-        musicLabel.textContent = "Music On";
-        musicButton.setAttribute("aria-label", "Pause background music");
+    //     musicLabel.textContent = "Music On";
+    //     musicButton.setAttribute("aria-label", "Pause background music");
 
-    } catch (error) {
-        console.log("Music could not start. Visitor can press the music button.");
-    }
+    // } catch (error) {
+    //     console.log("Music could not start. Visitor can press the music button.");
+    // }
 
     // Start curtain and text animations
     openingScreen.classList.add("open");
